@@ -4,10 +4,10 @@
       <%= content_tag :strong, current_user.name %>
     </li>
     <li>
-      <%= link_to '@'+current_user.username, current_user.username %><!--is there a way to do the above without deleteing 'content_tag :small'?-->
+      <%= link_to '@'+current_user.username, "/user/#{current_user.username}" %><!--is there a way to do the above without deleteing 'content_tag :small'?-->
     </li>
     <li>
-      <table class="table table-bordered stats">
+      <table class="table table-bordered stats" style="text-align: center; float: center; margin: 0 auto;">
         <tbody>
           <tr>
             <td>
