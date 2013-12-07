@@ -16,14 +16,21 @@
     <div class="clearfix"></div>
     <hr />
     <ol class="list-unstyled">
-      <% @user.twets.each do |twet| -%>
+      <% @user.twets.order('created_at DESC').each do |twet| -%>
       <li>
         <%= content_tag :strong, twet.user.name, :class => 'pull-left text-middle' %>
         <%= link_to "@#{@user.username}", "/user/#{@user.username}", :class => 'text-muted pad-10 text-middle' %> 
         <!--is there a way to do the above without deleteing 'content_tag :strong?'-->
         <%= content_tag :small, twet.created_at.strftime("%b %-d"), :class => 'text-muted text-middle pull-right' %>
         <div class="clearfix"></div>
-        <%= content_tag :p, twet.content %>
+        <% twet.content.split(/ /).each do |word| %>
+            <% if word.start_with?('@') %> 
+                <% word = word.gsub(/[^0-9A-Za-z]/, '') %>
+                <%= link_to "@"+word, "/user/#{word}" %>
+            <% else %>
+              <%= word %>
+            <% end %>
+          <% end %> 
       </li>
       <% end %>
     </ol>
