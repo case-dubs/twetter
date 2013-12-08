@@ -12,19 +12,19 @@
     <ol class="list-unstyled">
       <% @twets.each do |twet| -%>
       <li>
-        <%= content_tag :strong, twet.user.name, :class => 'pull-left text-middle' %>
+         <%= content_tag :td, image_tag(twet.user.gravatar_url, :class => 'pull-left img-rounded', :style => 'margin: 5px 8px 4px 15px; width: 50px;'), :style => 'width: 60px;' %></li>
+        <p><%= content_tag :strong, twet.user.name, :class => 'pull-left text-middle' %>
         <%= link_to "@"+twet.user.username, "/user/#{twet.user.username}", :class => 'text-muted pad-10 text-middle' %> 
         <!--is there a way to do the above without deleteing 'content_tag :strong?'-->
-        <%= content_tag :small, twet.created_at.strftime("%b %-d"), :class => 'text-muted text-middle pull-right' %>
-        
-        <div class="clearfix"></div>
-          <% twet.content.split(/ /).each do |word| %>
+       <%= content_tag :small, twet.created_at.strftime("%b %-d"), :class => 'text-muted text-middle pull-right' %></p>
+         <p style="margin-top: -10px;"> <% twet.content.split(/ /).each do |word| %>
             <% if word.start_with?('@') %> 
               <%= link_to word, "/user/#{word.gsub(/[^0-9A-Za-z]/, '')}" %>
             <% else %>
               <%= word %>
             <% end %>
-          <% end %> 
+          <% end %></p>
+          <div class="clearfix"></div>
       </li>
       <li><hr></li>
       <% end -%>

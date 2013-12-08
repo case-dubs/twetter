@@ -53,4 +53,6 @@ group :development, :test do
   gem 'shoulda-matchers'
 end
 
+gem 'gravtastic'
+
 gem 'rails_12factor', group: :production

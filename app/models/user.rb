@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
   validates :name, :presence => true
   validates :username, :presence => true, :uniqueness => true
 
+  #Includes gravatar's gravatastic functionality to users
+  include Gravtastic
+  gravtastic
+
   # Scope method to get all users except the one passed.
   #
   def self.all_except(user)

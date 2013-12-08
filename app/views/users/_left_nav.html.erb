@@ -1,10 +1,12 @@
 <div class="col-md-4">
   <ul class="nav nav-pills nav-stacked well text-left">
+    <li class="row"><%= content_tag :td, image_tag(@user.gravatar_url, :class => 'pull-left img-rounded', :style => 'margin: 5px 8px 4px 15px; width: 60px;'), :style => 'width: 60px;' %>
+    </li>
     <li>
       <%= content_tag :strong, @user.name %>
     </li>
     <li>
-      <%= link_to "@#{@user.username}", "/user/#{@user.username}" %><!--is there a way to do the above without deleteing 'content_tag :small'?-->
+      <%= link_to "@#{@user.username}", "/user/#{@user.username}" %>
     </li>
     <li style="text-align: center;">
       <table class="table table-bordered stats" style="text-align: center; float: center; margin: 0 auto;">
